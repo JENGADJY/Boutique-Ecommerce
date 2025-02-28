@@ -47,7 +47,7 @@ $cartItems = array_count_values($_SESSION['cart']);
         <?php endforeach; ?>
 
         <br>
-        <a href="../index.php">⬅ Retour à la boutique</a>
+        <a href="index.php">⬅ Retour à la boutique</a>
     </div>
 </body>
 </html>
