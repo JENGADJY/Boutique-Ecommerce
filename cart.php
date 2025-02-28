@@ -16,23 +16,38 @@ $cartItems = array_count_values($_SESSION['cart']);
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <title>Votre Panier</title>
+    <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-    <h2>Votre Panier</h2>
-    
-    <?php foreach ($cartItems as $productId => $quantity): 
-        $product = Product::getById($productId);
-    ?>
-        <div>
-            <h3><?= htmlspecialchars($product['name']); ?></h3>
-            <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
-            <p>Quantité : <?= $quantity; ?></p>
-        </div>
-    <?php endforeach; ?>
+    <div class="container">
+        <h1>Votre Panier</h1>
+        <?php
+        $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+        $cartItems = array_count_values($cart);
 
-    <a href="index.php">Retour à la boutique</a>
+        foreach ($cartItems as $productId => $quantity):
+            $product = Product::getById($productId);
+        ?>
+            <div class="cart-item">
+                <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
+                <div class="details">
+                    <h3><?= htmlspecialchars($product['name']); ?></h3>
+                    <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
+                    <p>Quantité : <?= $quantity; ?></p>
+                </div>
+                <form action="../controllers/CartController.php" method="POST">
+                    <input type="hidden" name="id" value="<?= $productId; ?>">
+                    <button type="submit" name="remove">Supprimer</button>
+                </form>
+            </div>
+        <?php endforeach; ?>
+
+        <br>
+        <a href="../index.php">⬅ Retour à la boutique</a>
+    </div>
 </body>
 </html>

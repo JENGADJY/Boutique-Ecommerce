@@ -6,8 +6,9 @@ $products = Product::getAll();
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
     <title>Accueil - Boutique</title>
 </head>
 <body>
@@ -16,6 +17,7 @@ $products = Product::getAll();
     <?php foreach ($products as $product): ?>
         <div>
             <h2><?= htmlspecialchars($product['name']); ?></h2>
+            <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" width="200">
             <p><?= htmlspecialchars($product['description']); ?></p>
             <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
             <form action="cart.php" method="POST">

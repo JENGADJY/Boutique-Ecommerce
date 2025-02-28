@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Connexion</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <h2>Connexion</h2>
