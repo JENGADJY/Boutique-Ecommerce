@@ -1,14 +1,20 @@
 <?php
 session_start();
-require_once '../models/Product.php';
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
-    $_SESSION['cart'][] = $_POST['id'];
-    header("Location: ../views/cart.php");
-    exit();
+// Suppression d'un article spécifique
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove'])) {
+    $product_id = $_POST['id'];
+    $index = array_search($product_id, $_SESSION['cart']);
+    if ($index !== false) {
+        unset($_SESSION['cart'][$index]);
+    }
+    $_SESSION['cart'] = array_values($_SESSION['cart']); // Réindexe le tableau
 }
+
+header("Location: ../views/cart.php");
+exit();
 ?>
