@@ -4,7 +4,7 @@ require_once '../config/database.php';
 require_once '../models/User.php';
 
 if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    header("Location: ../index.php");
+    header("Location: ../page/error_admin.php");
     exit();
 }
 

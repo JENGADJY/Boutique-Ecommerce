@@ -12,6 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         header("Location: ../admin/manage_products.php");
         exit();
     }
+    if (isset($_POST['update']) && isset($_POST['id']) && isset($_POST['price'])) {
+        Product::updatePrice($_POST['id'], $_POST['price']);
+        header("Location: ../admin/manage_products.php");
+        exit();
+    }
 }
 
 $products = Product::getAll();

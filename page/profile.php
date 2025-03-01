@@ -2,20 +2,12 @@
 session_start();
 require_once '../config/database.php'; 
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: ../login.php");
+if (!isset($_SESSION['user'])) {
+    header("Location: ../page/login.php");
     exit();
 }
 
-$stmt = $conn->prepare("SELECT id, email FROM users WHERE id = ?");
-$stmt->execute([$_SESSION['user_id']]);
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$user) {
-    session_destroy();
-    header("Location: ../login.php");
-    exit();
-}
+$user = $_SESSION['user'];
 ?>
 
 <!DOCTYPE html>
@@ -26,8 +18,10 @@ if (!$user) {
     <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <h2>Bienvenue sur votre profil</h2>
+    <h2>Bienvenue, <?= htmlspecialchars($user['name']); ?> !</h2>
     <p><strong>Email :</strong> <?= htmlspecialchars($user['email']); ?></p>
+    <p><strong>Rôle :</strong> <?= htmlspecialchars($user['role']); ?></p>
+
     <a href="logout.php">Se déconnecter</a>
 </body>
 </html>

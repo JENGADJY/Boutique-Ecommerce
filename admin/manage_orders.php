@@ -2,19 +2,16 @@
 session_start();
 require_once '../config/database.php';
 
-// Vérifier si l'utilisateur est un admin
-if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
-    header("Location: ../index.php");
+if (!isset($_SESSION['users']) || $_SESSION['users']['role'] !== 'admin') {
+    header("Location: ../page/error_admin.php");
     exit();
 }
 
-// Récupérer les commandes
 $stmt = $conn->query("SELECT orders.id, users.name AS user_name, orders.total_price, orders.status 
                       FROM orders 
                       JOIN users ON orders.user_id = users.id");
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-// Mettre à jour le statut d'une commande
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
     $order_id = $_POST['order_id'];
     $new_status = $_POST['status'];

@@ -23,7 +23,7 @@ class User {
 
     public static function getAll() {
         global $conn;
-        $stmt = $conn->query("SELECT id, name, email FROM users");
+        $stmt = $conn->query("SELECT id, name,role ,email FROM users");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
