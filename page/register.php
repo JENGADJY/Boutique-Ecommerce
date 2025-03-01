@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Inscription</title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <h2>Inscription</h2>

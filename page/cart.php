@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'models/Product.php';
+require_once '../models/Product.php';
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -20,7 +20,7 @@ $cartItems = array_count_values($_SESSION['cart']);
 <head>
     <meta charset="UTF-8">
     <title>Votre Panier</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <div class="container">
@@ -47,7 +47,7 @@ $cartItems = array_count_values($_SESSION['cart']);
         <?php endforeach; ?>
 
         <br>
-        <a href="index.php">⬅ Retour à la boutique</a>
+        <a href="../index.php">⬅ Retour à la boutique</a>
     </div>
 </body>
 </html>

@@ -11,7 +11,7 @@ $products = Product::getAll();
 <head>
     <meta charset="UTF-8">
     <title>Accueil - Boutique</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
     <h1>Bienvenue sur notre boutique</h1>
@@ -25,7 +25,7 @@ $products = Product::getAll();
             
             <a href="page/product_detail.php?id=<?= $product['id']; ?>">Voir plus</a>
 
-            <form action="cart.php" method="POST">
+            <form action="page/cart.php" method="POST">
                 <input type="hidden" name="id" value="<?= $product['id']; ?>">
                 <button type="submit" name="add_to_cart">Ajouter au panier</button>
             </form>

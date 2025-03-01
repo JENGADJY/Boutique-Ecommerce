@@ -23,7 +23,7 @@ Modifier
 ### 3️⃣ **Créer la base de données**
 
 Pour créer la base de données nécessaire au projet, ouvrez votre navigateur et entrez l'URL suivante :  
-🔗 [http://localhost/ecommerce/install.php](http://localhost/ecommerce/install.php)
+🔗 [http://localhost/ecommerce/database/install.php](http://localhost/ecommerce/database/install.php)
 
 Ce script créera automatiquement la base de données **`ecommerce`** et toutes les tables requises.
 
@@ -41,7 +41,7 @@ Les données des produits proviennent du site **Vinyl Collector**. Pour récupé
    bash
    Copier
    Modifier
-   php scraper.php
+   php database/scraper.php
    Une fois cette commande exécutée, les produits seront ajoutés automatiquement à la base de données.
    ```
 
