@@ -6,7 +6,7 @@ session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['register'])) {
         if (User::register($_POST['name'], $_POST['email'], $_POST['password'])) {
-            header("Location: login.php");
+            header("Location: ../page/login.php");
             exit();
         }
     }
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = User::login($_POST['email'], $_POST['password']);
         if ($user) {
             $_SESSION['user'] = $user;
-            header("Location: index.php");
+            header("Location: ../page/index.php");
             exit();
         }
     }
