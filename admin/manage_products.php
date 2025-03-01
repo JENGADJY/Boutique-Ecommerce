@@ -1,10 +1,14 @@
 <?php
+session_start();
+require_once '../config/database.php';
 require_once '../controllers/ProductController.php';
 
-if (!isset($_SESSION['users']) || $_SESSION['users']['role'] !== 'admin') {
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: ../page/error_admin.php");
     exit();
 }
+
+
 ?>
 
 <!DOCTYPE html>
