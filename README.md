@@ -45,24 +45,3 @@ Une fois cette commande exécutée, les produits seront ajoutés automatiquement
 📌 Accéder à la Boutique
 Après avoir installé la base de données et exécuté le scraper, vous pouvez accéder à la boutique en ligne en ouvrant votre navigateur et en visitant :
 🔗 http://localhost/ecommerce/index.php
-
-📌 Fonctionnalités Principales
-✅ Affichage des produits : Consultez les vinyles disponibles.
-✅ Détails des produits : Visualisez la description, le prix et l'image de chaque vinyle.
-✅ Ajout au panier : Sélectionnez des produits et ajoutez-les à votre panier.
-✅ Gestion des utilisateurs : Connexion et gestion des comptes clients et administrateurs.
-
-🚀 Résumé des Étapes d'Installation
-1️⃣ Placer le projet dans htdocs.
-2️⃣ Démarrer Apache et MySQL via XAMPP.
-3️⃣ Créer la base de données via install.php.
-4️⃣ Lancer le scraping des produits via php scraper.php.
-5️⃣ Accéder à la boutique via index.php.
-
-### **📌 Instructions :**
-
-1. **Crée un fichier `README.md`** à la racine de ton projet.
-2. **Colle le contenu ci-dessus dans le fichier**.
-3. **Les utilisateurs pourront suivre ces étapes pour installer et lancer le projet**.
-
-✅ **Ce fichier est maintenant prêt à être utilisé** ! Dis-moi si tu veux d'autres modifications. 🚀😃
