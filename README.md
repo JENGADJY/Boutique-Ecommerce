@@ -37,13 +37,10 @@ Les données des produits proviennent du site **Vinyl Collector**. Pour récupé
 2. **Naviguez jusqu’au dossier du projet** :
    ```bash
    cd C:\xampp\htdocs\ecommerce
-   Exécutez le script scraper.php pour récupérer les produits :
-   bash
-   Copier
-   Modifier
    php database/scraper.php
-   Une fois cette commande exécutée, les produits seront ajoutés automatiquement à la base de données.
    ```
+
+Une fois cette commande exécutée, les produits seront ajoutés automatiquement à la base de données.
 
 📌 Accéder à la Boutique
 Après avoir installé la base de données et exécuté le scraper, vous pouvez accéder à la boutique en ligne en ouvrant votre navigateur et en visitant :
