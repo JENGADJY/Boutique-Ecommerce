@@ -4,14 +4,11 @@ require_once '../config/database.php';
 require_once '../models/Product.php';
 
 if (!isset($_SESSION['user'])) {
-    header("Location: ../login.php");
+    header("Location: ../page/login.php");
     exit();
 }
 
-if (empty($_SESSION['cart'])) {
-    header("Location: ../page/cart.php");
-    exit();
-}
+
 
 $userId = $_SESSION['user']['id'];
 $cartItems = array_count_values($_SESSION['cart']);
