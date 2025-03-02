@@ -21,6 +21,7 @@ $user = $_SESSION['user'];
     <h2>Bienvenue, <?= htmlspecialchars($user['name']); ?> !</h2>
     <p><strong>Email :</strong> <?= htmlspecialchars($user['email']); ?></p>
     <p><strong>Rôle :</strong> <?= htmlspecialchars($user['role']); ?></p>
+    <li><a href="../index.php"> Retour au site</a></li>
 
     <a href="logout.php">Se déconnecter</a>
 </body>

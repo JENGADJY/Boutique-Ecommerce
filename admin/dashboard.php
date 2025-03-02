@@ -14,6 +14,7 @@
         <ul class="admin-menu">
             <li><a href="manage_products.php"> Gérer les produits</a></li>
             <li><a href="manage_users.php"> Gérer les utilisateurs</a></li>
+            <li><a href="manage_orders.php"> Gérer les commandes</a></li>
             <li><a href="../index.php"> Retour au site</a></li>
             <li><a href="../page/logout.php"> Déconnexion</a></li>
         </ul>

@@ -2,26 +2,19 @@
 session_start();
 require_once '../config/database.php';
 
-if (!isset($_SESSION['users']) || $_SESSION['users']['role'] !== 'admin') {
+if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: ../page/error_admin.php");
     exit();
 }
 
+
 $stmt = $conn->query("SELECT orders.id, users.name AS user_name, orders.total_price, orders.status 
                       FROM orders 
-                      JOIN users ON orders.user_id = users.id");
+                      JOIN users ON orders.user_id = users.id
+                      ORDER BY orders.created_at DESC");
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
-    $order_id = $_POST['order_id'];
-    $new_status = $_POST['status'];
 
-    $stmt = $conn->prepare("UPDATE orders SET status = ? WHERE id = ?");
-    $stmt->execute([$new_status, $order_id]);
-
-    header("Location: manage_orders.php");
-    exit();
-}
 ?>
 
 <!DOCTYPE html>

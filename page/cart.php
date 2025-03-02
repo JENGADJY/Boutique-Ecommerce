@@ -48,6 +48,12 @@ $cartItems = array_count_values($_SESSION['cart']);
 
         <br>
         <a href="../index.php">⬅ Retour à la boutique</a>
+        <?php if (!empty($cart)): ?>
+            <form action="../controllers/OrderController.php" method="POST">
+                <button type="submit" name="place_order" class="order-btn">Passer la commande</button>
+            </form>
+        <?php endif; ?>
+
     </div>
 </body>
 </html>
