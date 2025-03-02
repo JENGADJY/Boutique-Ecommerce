@@ -84,11 +84,7 @@ try {
     INSERT INTO users (name, email, password, role) VALUES
     ('Admin', 'admin@admin.com', 'adminpassword', 'admin'),
 
-    -- Insertion de produits de test
-    INSERT INTO products (name, description, price, stock, image) VALUES
-    ('Produit 1', 'Description du produit 1', 10.99, 100, 'product1.jpg'),
-    ('Produit 2', 'Description du produit 2', 20.50, 50, 'product2.jpg'),
-    ('Produit 3', 'Description du produit 3', 15.75, 30, 'product3.jpg');
+    
 
     ";
 
