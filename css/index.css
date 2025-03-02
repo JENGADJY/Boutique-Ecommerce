@@ -1,0 +1,126 @@
+/* index.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #747c74;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #747c74;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Grid de 4 colonnes sur grand écran, 2 colonnes sur tablette, 1 colonne sur mobile */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Ajustements pour rendre le site responsive */
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .products-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Carte produit */
+.product-card {
+    background: #2d343e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+    max-width: 250px; /* Largeur maximale des cartes */
+    height: 350px; /* Hauteur fixe pour toutes les cartes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card img {
+    width: 100%;
+    max-width: 150px; 
+    height: 150px; /* Hauteur fixe pour les images */
+    object-fit: cover; /* Coupe l'image pour garder un bon ratio */
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto; 
+}
+
+.product-card h2 {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #acacb2;
+    flex-grow: 1; /* Remplit l'espace pour éviter que les boutons bougent */
+    text-align: center;
+    padding: 0 10px;
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: #b9cedb;
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* Boutons */
+.product-card a, .product-card button {
+    text-decoration: none;
+    color: #ebf4fb;
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+
+
+
+.product-card button {
+    background-color: #4cb4f3;
+    border: none;
+    cursor: pointer;
+}
+
+.product-card button:hover {
+    background-color: #4cb4f3;
+}

@@ -1,0 +1,128 @@
+/* product.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #747c74;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #ebf4fb;
+    margin-bottom: 20px;
+    font-size: 32px;
+}
+
+p {
+    font-size: 18px;
+    color: #333;
+    margin: 10px 0;
+    text-align: center;
+}
+
+img {
+    width: 100%;
+    max-width: 400px; 
+    height: auto;
+    object-fit: contain; 
+    border-radius: 10px;
+    display: block;
+    margin: 20px auto;
+}
+
+.product-card {
+    background: #2d343e;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.product-card h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.product-card .price {
+    font-weight: bold;
+    color: #b9cedb;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-card button {
+    background-color: #4cb4f3;
+    border: none;
+    cursor: pointer;
+    color: #ebf4fb;
+    padding: 15px;
+    border-radius: 4px;
+    width: 100%;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+.product-card button:hover {
+    background-color: #3498db;
+}
+
+/* Bouton retour */
+a {
+    color: #154c79;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+    text-align: center;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: #063970;
+}
+
+/* Boutons */
+button {
+    text-decoration: none;
+    color: #ebf4fb;
+    padding: 10px;
+    border-radius: 4px;
+    display: inline-block;
+    width: 90%;
+    margin-top: 10px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button {
+    background-color: #4cb4f3;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cb4f3;
+}

@@ -82,9 +82,7 @@ try {
 
     -- Insertion de données de test pour les utilisateurs
     INSERT INTO users (name, email, password, role) VALUES
-    ('Admin', 'admin@admin.com', 'adminpassword', 'admin'),
-
-    
+    ('Admin', 'admin@admin.com', 'adminpassword', 'admin')
 
     ";
 

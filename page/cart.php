@@ -48,7 +48,7 @@ $cartItems = $stmt->fetchAll();
 <head>
     <meta charset="UTF-8">
     <title>Votre Panier</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/cart.css">
 </head>
 <body>
     <div class="container">
