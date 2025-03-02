@@ -1,6 +1,7 @@
 <?php
+require_once '../config/database.php';
 require_once '../models/Product.php';
-
+require '../controllers/ProductController.php'; 
 if (!isset($_GET['id'])) {
     die("Produit introuvable.");
 }
@@ -18,11 +19,14 @@ if (!$product) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($product['name']); ?></title>
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <h1><?= htmlspecialchars($product['name']); ?></h1>
     <p><?= htmlspecialchars($product['description']); ?></p>
     <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
+    <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
+
     <form action="../controllers/CartController.php" method="POST">
         <input type="hidden" name="id" value="<?= $product['id']; ?>">
         <button type="submit">Ajouter au panier</button>
