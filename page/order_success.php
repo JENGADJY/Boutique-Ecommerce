@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎉 Commande validée !</h1>
+        <h1> Commande validée !</h1>
         <p>Votre commande a été enregistrée avec succès.</p>
         <a href="../index.php">Retour à la boutique</a>
     </div>
