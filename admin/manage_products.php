@@ -7,6 +7,19 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
     header("Location: ../page/error_admin.php");
     exit();
 }
+
+$products = Product::getAll();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $stock = $_POST['stock'];
+    
+    Product::add($name, $description, $price, $stock);
+    header("Location: manage_products.php"); 
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +38,20 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
         </div>
 
         <h2>Liste des produits</h2>
+
+        <!-- Formulaire pour ajouter un produit -->
+        <h3>Ajouter un produit</h3>
+        <form method="POST" action="manage_products.php">
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+            <label for="description">Description :</label>
+            <textarea id="description" name="description" required></textarea>
+            <label for="price">Prix :</label>
+            <input type="number" id="price" name="price" step="0.01" required>
+            <label for="stock">Stock :</label>
+            <input type="number" id="stock" name="stock" required>
+            <button type="submit" name="add_product" class="add-btn">Ajouter le produit</button>
+        </form>
         
         
         <div class="product-list">
