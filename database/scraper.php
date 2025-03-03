@@ -5,7 +5,7 @@ require 'config/database.php';
 use Goutte\Client;
 
 $client = new Client();
-$baseUrl = "https://vinylcollector.store/collections/promos"; 
+$baseUrl = "https://vinylcollector.store/collections/nouveautes"; 
 $page = 1;  
 $firstPageScraped = false;
 
@@ -38,7 +38,7 @@ while (true) {
 
             if ($stmt->rowCount() === 0) {
                 $stmt = $conn->prepare("INSERT INTO products (name, description, price, stock, image) VALUES (?, ?, ?, ?, ?)");
-                $stmt->execute([$name, "Vinyle en promotion", $price, rand(10, 100), $image]);
+                $stmt->execute([$name, "Vinyle ", $price, rand(10, 100), $image]);
                 echo "Produit ajouté : $name - $price €\n";
             } else {
                 echo "Produit déjà présent : $name\n";
