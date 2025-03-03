@@ -29,10 +29,17 @@ if (!$product) {
         <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
         <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
 
+<<<<<<< HEAD
         <form action="../controllers/CartController.php" method="POST">
             <input type="hidden" name="id" value="<?= $product['id']; ?>">
             <button type="submit">Ajouter au panier</button>
         </form>
+=======
+    <form action="../page/cart.php" method="POST">
+        <input type="hidden" name="id" value="<?= $product['id']; ?>">
+        <button type="submit">Ajouter au panier</button>
+    </form>
+>>>>>>> 4ec6a0ce1f98b3a7569096ca6f9cd131bf78d173
     <br>
 </body>
 </html>
