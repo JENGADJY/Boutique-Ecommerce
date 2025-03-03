@@ -31,6 +31,12 @@ class Product {
         $stmt = $conn->prepare("DELETE FROM products WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
+    public static function updatePrice($id, $price) {
+        $conn = self::getConnection();
+        $stmt = $conn->prepare("UPDATE products SET price = ? WHERE id = ?");
+        $stmt->execute([$price, $id]);
+    }
 }
 
 ?>
