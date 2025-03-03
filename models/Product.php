@@ -32,11 +32,14 @@ class Product {
         return $stmt->execute([$id]);
     }
 
-    public static function updatePrice($id, $price) {
-        $conn = self::getConnection();
-        $stmt = $conn->prepare("UPDATE products SET price = ? WHERE id = ?");
-        $stmt->execute([$price, $id]);
+    
+    // Dans le fichier Product.php
+    public static function update($id, $name, $description, $price, $stock) {
+    $conn = self::getConnection();
+    $stmt = $conn->prepare("UPDATE products SET name = ?, description = ?, price = ?, stock = ? WHERE id = ?");
+    $stmt->execute([$name, $description, $price, $stock, $id]);
     }
+
 }
 
 ?>

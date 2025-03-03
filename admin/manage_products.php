@@ -11,6 +11,7 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 $products = Product::getAll();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
+    // Ajouter un produit
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
@@ -18,6 +19,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     
     Product::add($name, $description, $price, $stock);
     header("Location: manage_products.php"); 
+    exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
+    // Mettre à jour un produit
+    $id = $_POST['id'];
+    $name = $_POST['name'];
+    $description = $_POST['description'];
+    $price = $_POST['price'];
+    $stock = $_POST['stock'];
+    
+    Product::update($id, $name, $description, $price, $stock);
+    header("Location: manage_products.php");
     exit();
 }
 ?>
@@ -53,19 +67,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
             <button type="submit" name="add_product" class="add-btn">Ajouter le produit</button>
         </form>
         
-        
         <div class="product-list">
             <?php foreach ($products as $product): ?>
                 <div class="product-card">
                     <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>" class="product-image">
                     <h3><?= htmlspecialchars($product['name']); ?></h3>
                     <p>Prix : <strong><?= htmlspecialchars($product['price']); ?>€</strong></p>
-
-                    <!-- Formulaire de modification du prix -->
-                    <form action="../controllers/ProductController.php" method="POST">
+                    
+                    <!-- Formulaire de modification du nom, description, prix et stock -->
+                    <form method="POST" action="manage_products.php">
                         <input type="hidden" name="id" value="<?= $product['id']; ?>">
+                        <label for="name">Nom :</label>
+                        <input type="text" name="name" value="<?= htmlspecialchars($product['name']); ?>" required>
+                        
+                        <label for="description">Description :</label>
+                        <textarea name="description" required><?= htmlspecialchars($product['description']); ?></textarea>
+                        
+                        <label for="price">Prix :</label>
                         <input type="number" name="price" value="<?= htmlspecialchars($product['price']); ?>" step="0.01" required>
-                        <button type="submit" name="update" class="update-btn">Modifier le prix</button>
+                        
+                        <label for="stock">Stock :</label>
+                        <input type="number" name="stock" value="<?= htmlspecialchars($product['stock']); ?>" required>
+                        
+                        <button type="submit" name="update_product" class="update-btn">Modifier</button>
                     </form>
 
                     <!-- Formulaire de suppression d'un produit -->
@@ -77,7 +101,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
             <?php endforeach; ?>
         </div>
 
-        
     </div>
 </body>
 </html>
