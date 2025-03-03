@@ -12,6 +12,19 @@ $stmt = $conn->query("SELECT orders.id, users.name AS user_name, orders.total_pr
                       JOIN users ON orders.user_id = users.id
                       ORDER BY orders.created_at DESC");
 $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_status'])) {
+    $orderId = $_POST['order_id'];
+    $status = $_POST['status'];
+
+    // Mise à jour de la commande dans la base de données
+    $stmt = $conn->prepare("UPDATE orders SET status = ? WHERE id = ?");
+    $stmt->execute([$status, $orderId]);
+
+    // Rediriger pour actualiser la page après la mise à jour
+    header("Location: manage_orders.php");
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
