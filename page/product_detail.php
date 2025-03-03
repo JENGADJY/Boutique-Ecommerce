@@ -24,15 +24,15 @@ if (!$product) {
 </head>
 <body>
     <a href="../index.php">Retour à la boutique</a>
-    <h1><?= htmlspecialchars($product['name']); ?></h1>
-    <p><?= htmlspecialchars($product['description']); ?></p>
-    <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
-    <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
+        <h1><?= htmlspecialchars($product['name']); ?></h1>
+        <p><?= htmlspecialchars($product['description']); ?></p>
+        <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
+        <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
 
-    <form action="../controllers/CartController.php" method="POST">
-        <input type="hidden" name="id" value="<?= $product['id']; ?>">
-        <button type="submit">Ajouter au panier</button>
-    </form>
+        <form action="../controllers/CartController.php" method="POST">
+            <input type="hidden" name="id" value="<?= $product['id']; ?>">
+            <button type="submit">Ajouter au panier</button>
+        </form>
     <br>
 </body>
 </html>

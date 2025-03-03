@@ -4,12 +4,20 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #747c74;
+    background-color: #747c74; /* Fond général */
     display: flex;
     justify-content: center;
-    flex-direction: column;
     align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #2e2e2e; /* Fond sombre centré */
+    border-radius: 8px;
     padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
@@ -21,23 +29,30 @@ h1 {
 
 p {
     font-size: 18px;
-    color: #333;
+    color: #ebf4fb; /* Texte clair */
     margin: 10px 0;
     text-align: center;
 }
 
 img {
     width: 100%;
-    max-width: 400px; 
+    max-width: 400px;
     height: auto;
-    object-fit: contain; 
+    object-fit: contain;
     border-radius: 10px;
     display: block;
     margin: 20px auto;
 }
 
+form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
 .product-card {
-    background: #2d343e;
+    background: #2d343e; /* Fond plus clair pour les cartes */
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -59,7 +74,7 @@ img {
 
 .product-card h2 {
     font-size: 24px;
-    color: #333;
+    color: #fff;
     margin-bottom: 10px;
 }
 
@@ -89,18 +104,22 @@ img {
 }
 
 /* Bouton retour */
-a {
-    color: #154c79;
+a.return-button {
+    background-color: #4cb4f3; /* Fond bleu comme sur les autres pages */
+    color: #ebf4fb; /* Texte clair */
     text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 4px;
     font-size: 16px;
-    margin-top: 20px;
+    font-weight: bold;
     display: inline-block;
     text-align: center;
-    transition: color 0.2s;
+    margin-top: 20px;
+    transition: background-color 0.2s;
 }
 
-a:hover {
-    color: #063970;
+a.return-button:hover {
+    background-color: #3498db; /* Changement de couleur au survol */
 }
 
 /* Boutons */
@@ -110,12 +129,13 @@ button {
     padding: 10px;
     border-radius: 4px;
     display: inline-block;
-    width: 90%;
     margin-top: 10px;
     font-size: 14px;
     font-weight: bold;
     transition: 0.2s;
+    width: 30%;  /* Garder la largeur actuelle */
 }
+
 
 button {
     background-color: #4cb4f3;
