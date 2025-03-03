@@ -58,20 +58,6 @@ try {
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE
     );
 
-    -- Table 'invoices'
-    CREATE TABLE IF NOT EXISTS invoices (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        order_id INT,
-        user_id INT,
-        total_price DECIMAL(10,2),
-        billing_address VARCHAR(255),
-        city VARCHAR(100),
-        postal_code VARCHAR(20),
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (order_id) REFERENCES orders(id),
-        FOREIGN KEY (user_id) REFERENCES users(id)
-    );
-
     -- Table 'cart'
     CREATE TABLE IF NOT EXISTS cart (
         id INT AUTO_INCREMENT PRIMARY KEY,

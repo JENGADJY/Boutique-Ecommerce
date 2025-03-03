@@ -19,8 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'role' => $user['role']
         ];
 
-
-
         $redirect = isset($_SESSION['redirect_after_login']) ? $_SESSION['redirect_after_login'] : '../index.php';
         unset($_SESSION['redirect_after_login']);
         header("Location: " . $redirect);
@@ -37,19 +35,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <title>Connexion</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-    <h2>Connexion</h2>
-    
-    <?php if (isset($error)) : ?>
-        <p style="color:red;"><?= htmlspecialchars($error); ?></p>
-    <?php endif; ?>
-    <!-- envoie de la requete de connection  -->
-    <form method="POST" action="">
-        <input type="email" name="email" placeholder="Email" required>
-        <input type="password" name="password" placeholder="Mot de passe" required>
-        <button type="submit" name="login">Se connecter</button>
-    </form>
+    <div class="container">
+        <h2>Connexion</h2>
+
+        <?php if (isset($error)) : ?>
+            <p style="color: red;"><?= htmlspecialchars($error); ?></p>
+        <?php endif; ?>
+
+        <!-- Formulaire de connexion -->
+        <form method="POST" action="">
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            <button type="submit" name="login">Se connecter</button>
+        </form>
+
+        <p>
+            Vous n'avez pas de compte ? <a href="../page/register.php">Inscrivez-vous ici</a>
+        </p>
+    </div>
 </body>
 </html>
