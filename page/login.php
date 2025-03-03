@@ -45,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php if (isset($error)) : ?>
         <p style="color:red;"><?= htmlspecialchars($error); ?></p>
     <?php endif; ?>
-    
+    <!-- envoie de la requete de connection  -->
     <form method="POST" action="">
         <input type="email" name="email" placeholder="Email" required>
         <input type="password" name="password" placeholder="Mot de passe" required>

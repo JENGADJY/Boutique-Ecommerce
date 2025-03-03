@@ -41,6 +41,8 @@ $orders = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <td><?= $order['total_price']; ?>€</td>
             <td><?= $order['status']; ?></td>
             <td>
+                
+            <!-- Pour modifier le status de la commande (simulation)/envoie de la requete a la db  -->
                 <form method="POST">
                     <input type="hidden" name="order_id" value="<?= $order['id']; ?>">
                     <select name="status">

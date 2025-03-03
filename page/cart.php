@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../config/database.php';  // Ajoute la connexion à la BDD
+require_once '../config/database.php'; 
 require_once '../models/Product.php';
 
 if (!isset($_SESSION['user'])) {

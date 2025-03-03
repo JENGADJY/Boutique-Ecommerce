@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <!-- Une commande validé  -->
         <h1> Commande validée !</h1>
         <p>Votre commande a été enregistrée avec succès.</p>
         <a href="../index.php">Retour à la boutique</a>

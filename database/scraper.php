@@ -11,7 +11,7 @@ $crawler = $client->request('GET', $url);
 if ($crawler->count() === 0) {
     die("Erreur : Impossible de charger la page !");
 }
-
+#Recuperation des données sur le site vinylcollector
 $crawler->filter('.product_card')->each(function ($node) use ($conn) {
     try {
         
@@ -30,7 +30,7 @@ $crawler->filter('.product_card')->each(function ($node) use ($conn) {
 
         $stmt = $conn->prepare("SELECT id FROM products WHERE name = ?");
         $stmt->execute([$name]);
-
+        #Insertion des produits dans la db
         if ($stmt->rowCount() === 0) {
             $stmt = $conn->prepare("INSERT INTO products (name, description, price, stock, image) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute([$name, "Vinyle en promotion", $price, rand(10, 100), $image]);

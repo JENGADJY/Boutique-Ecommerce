@@ -2,6 +2,7 @@
 require_once '../config/database.php';
 require_once '../models/Product.php';
 require '../controllers/ProductController.php'; 
+#si le produit existe bien 
 if (!isset($_GET['id'])) {
     die("Produit introuvable.");
 }

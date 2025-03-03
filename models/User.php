@@ -1,4 +1,5 @@
 <?php
+#fonction pour la structure et la recuperation des utilisateurs
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ecommerce/config/database.php';
 
 class User {

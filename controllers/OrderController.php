@@ -23,11 +23,12 @@ foreach ($cartItems as $productId => $quantity) {
 
 try {
     $conn->beginTransaction();
+    # Creation de la commande dans la db 
 
     $stmt = $conn->prepare("INSERT INTO orders (user_id, total_price, status) VALUES (?, ?, 'pending')");
     $stmt->execute([$userId, $totalPrice]);
     $orderId = $conn->lastInsertId();
-
+    # Creation de les produits de la commande dans la db 
     $stmt = $conn->prepare("INSERT INTO order_items (order_id, product_id, quantity, subtotal) VALUES (?, ?, ?, ?)");
     foreach ($cartItems as $productId => $quantity) {
         $product = Product::getById($productId);
@@ -39,7 +40,7 @@ try {
     $conn->commit();
 
     unset($_SESSION['cart']);
-
+    #Simulation de paiement accepté
     header("Location: ../page/order_success.php");
     exit();
 } catch (Exception $e) {

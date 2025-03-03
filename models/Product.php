@@ -1,4 +1,5 @@
 <?php
+#fonction pour la structure et la recuperation des produits
 require_once $_SERVER['DOCUMENT_ROOT'] . '/ecommerce/config/database.php';
 class Product {
     private static function getConnection() {

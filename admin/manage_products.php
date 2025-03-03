@@ -29,12 +29,14 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
                 <h2><?= htmlspecialchars($product['name']); ?></h2>
                 <p>Prix : <strong><?= htmlspecialchars($product['price']); ?>€</strong></p>
 
+                 <!-- Pour modifier le prix  -->
                 <form action="../controllers/ProductController.php" method="POST">
                     <input type="hidden" name="id" value="<?= $product['id']; ?>">
                     <input type="number" name="price" value="<?= htmlspecialchars($product['price']); ?>" step="0.01" required>
                     <button type="submit" name="update">Modifier le prix</button>
                 </form>
 
+                <!-- Pour supprimer un article  -->
                 <form action="../controllers/ProductController.php" method="POST">
                     <input type="hidden" name="id" value="<?= $product['id']; ?>">
                     <button type="submit" name="delete" class="delete-btn"> Supprimer</button>

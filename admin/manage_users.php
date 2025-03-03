@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
             <td><?= htmlspecialchars($user['name']); ?></td>
             <td><?= htmlspecialchars($user['email']); ?></td>
             <td>
+                 <!-- Pour supprimer un user -->
                 <form method="POST">
                     <input type="hidden" name="id" value="<?= $user['id']; ?>">
                     <button type="submit" name="delete" onclick="return confirm('Confirmer la suppression ?')">Supprimer</button>

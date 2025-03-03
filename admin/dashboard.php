@@ -12,6 +12,7 @@
         <h2>Tableau de bord - Administration</h2>
 
         <ul class="admin-menu">
+        <!-- Gestion administrateur  -->
             <li><a href="manage_products.php"> Gérer les produits</a></li>
             <li><a href="manage_users.php"> Gérer les utilisateurs</a></li>
             <li><a href="manage_orders.php"> Gérer les commandes</a></li>

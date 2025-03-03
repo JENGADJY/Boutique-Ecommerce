@@ -1,9 +1,11 @@
 <?php
+#Connexion à la database
 $host = 'localhost'; 
 $user = 'root';     
 $password = '';      
 $dbname = 'ecommerce'; 
 
+#insertion du script sql dans la db
 try {
     $conn = new PDO("mysql:host=$host", $user, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

@@ -9,6 +9,8 @@ if (!isset($_SESSION['user'])) {
 
 $userId = $_SESSION['user']['id'];
 
+
+# Reception de la requete post afin de soit recuperer,modifier le panier
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['id']) && isset($_POST['add'])) {
         $productId = $_POST['id'];
@@ -25,6 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$userId, $productId]);
         }
     }
+    # Suppression d'un article
 
     if (isset($_POST['remove'])) {
         $productId = $_POST['id'];
@@ -32,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt = $conn->prepare("DELETE FROM cart WHERE user_id = ? AND product_id = ?");
         $stmt->execute([$userId, $productId]);
     }
-
+    # Vider le Panier
+    
     if (isset($_POST['clear_cart'])) {
         $stmt = $conn->prepare("DELETE FROM cart WHERE user_id = ?");
         $stmt->execute([$userId]);
