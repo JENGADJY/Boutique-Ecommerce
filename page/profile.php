@@ -15,14 +15,22 @@ $user = $_SESSION['user'];
 <head>
     <meta charset="UTF-8">
     <title>Profil</title>
-    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
-    <h2>Bienvenue, <?= htmlspecialchars($user['name']); ?> !</h2>
-    <p><strong>Email :</strong> <?= htmlspecialchars($user['email']); ?></p>
-    <p><strong>Rôle :</strong> <?= htmlspecialchars($user['role']); ?></p>
-    <li><a href="../index.php"> Retour au site</a></li>
+    <div class="container">
+        <h2>Bienvenue, <?= htmlspecialchars($user['name']); ?> !</h2>
+        <div class="profile-details">
+            <p><strong>Email :</strong> <?= htmlspecialchars($user['email']); ?></p>
+            <p><strong>Rôle :</strong> <?= htmlspecialchars($user['role']); ?></p>
+        </div>
 
-    <a href="logout.php">Se déconnecter</a>
+        <div class="actions">
+            <a href="../index.php">Retour au site</a>
+            <form action="logout.php" method="POST">
+                <button type="submit">Se déconnecter</button>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

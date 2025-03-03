@@ -1,0 +1,81 @@
+/* manage_users.css */
+
+/* Style général de la page de gestion des utilisateurs */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #747c74;
+    color: #ebf4fb;
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal de la page */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #2d343e;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre principal */
+h2 {
+    text-align: center;
+    font-size: 32px;
+    color: #ebf4fb;
+    margin-bottom: 20px;
+}
+
+/* Table de gestion des utilisateurs */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #4cb4f3;
+}
+
+th {
+    background-color: #333;
+    color: #ebf4fb;
+}
+
+td {
+    background-color: #444;
+}
+
+/* Bouton de suppression d'un utilisateur */
+button {
+    background-color: #ff4d4d;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #e60000;
+}
+
+/* Bouton retour au tableau de bord */
+a.back-btn {
+    display: inline-block;
+    background-color: #4cb4f3;
+    color: #ebf4fb;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+a.back-btn:hover {
+    background-color: #38a1e6;
+}

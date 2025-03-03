@@ -1,0 +1,60 @@
+/* admin.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #747c74;
+    display: flex;
+    justify-content: center;
+}
+
+.admin-dashboard {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #2d343e;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    color: #ebf4fb;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-menu {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+.admin-menu li {
+    margin-bottom: 15px;
+}
+
+.admin-menu a {
+    text-decoration: none;
+    color: #4cb4f3;
+    font-size: 18px;
+    padding: 10px 20px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #333;
+    transition: 0.2s;
+}
+
+.admin-menu a:hover {
+    background-color: #4cb4f3;
+    color: #2d343e;
+}
+
+a {
+    text-decoration: none;
+    color: #4cb4f3;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
