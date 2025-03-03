@@ -10,15 +10,28 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
 $products = Product::getAll();
 
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_product'])) {
     // Ajouter un produit
     $name = $_POST['name'];
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    
-    Product::add($name, $description, $price, $stock);
-    header("Location: manage_products.php"); 
+
+    // Traitement de l'image
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $imageTmpName = $_FILES['image']['tmp_name'];
+        $imageName = basename($_FILES['image']['name']);
+        $imagePath = 'uploads/' . $imageName; // Destination du fichier image
+
+        // Déplacer le fichier vers le dossier "uploads"
+        move_uploaded_file($imageTmpName, $_SERVER['DOCUMENT_ROOT'] . '/ecommerce/' . $imagePath);
+    } else {
+        $imagePath = null; // Si pas d'image, ne pas modifier l'image
+    }
+
+    Product::add($name, $description, $price, $stock, $imagePath);
+    header("Location: manage_products.php");
     exit();
 }
 
@@ -29,8 +42,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
     $description = $_POST['description'];
     $price = $_POST['price'];
     $stock = $_POST['stock'];
-    
-    Product::update($id, $name, $description, $price, $stock);
+
+    // Traitement de l'image si elle est présente
+    if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+        $imageTmpName = $_FILES['image']['tmp_name'];
+        $imageName = basename($_FILES['image']['name']);
+        $imagePath = 'uploads/' . $imageName;
+
+        // Déplacer le fichier vers le dossier "uploads"
+        move_uploaded_file($imageTmpName, $_SERVER['DOCUMENT_ROOT'] . '/ecommerce/' . $imagePath);
+    } else {
+        // Si aucune nouvelle image n'est uploadée, garder l'image existante
+        $imagePath = $_POST['existing_image']; // L'ancienne image
+    }
+
+    Product::update($id, $name, $description, $price, $stock, $imagePath);
     header("Location: manage_products.php");
     exit();
 }
@@ -64,6 +90,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
             <input type="number" id="price" name="price" step="0.01" required>
             <label for="stock">Stock :</label>
             <input type="number" id="stock" name="stock" required>
+            
             <button type="submit" name="add_product" class="add-btn">Ajouter le produit</button>
         </form>
         
@@ -88,6 +115,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_product'])) {
                         
                         <label for="stock">Stock :</label>
                         <input type="number" name="stock" value="<?= htmlspecialchars($product['stock']); ?>" required>
+
+                        
+                        
                         
                         <button type="submit" name="update_product" class="update-btn">Modifier</button>
                     </form>
