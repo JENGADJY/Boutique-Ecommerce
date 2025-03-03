@@ -23,16 +23,18 @@ if (!$product) {
     <link rel="stylesheet" href="../css/product.css">
 </head>
 <body>
-    <a href="../index.php">Retour à la boutique</a>
-    <h1><?= htmlspecialchars($product['name']); ?></h1>
-    <p><?= htmlspecialchars($product['description']); ?></p>
-    <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
-    <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
+    <div class="container">
+        <!-- Bouton retour à la boutique -->
+        <a href="../index.php" class="return-button">Retour à la boutique</a>
+        <h1><?= htmlspecialchars($product['name']); ?></h1>
+        <p><?= htmlspecialchars($product['description']); ?></p>
+        <img src="<?= htmlspecialchars($product['image']); ?>" alt="<?= htmlspecialchars($product['name']); ?>">
+        <p>Prix : <?= htmlspecialchars($product['price']); ?>€</p>
 
-    <form action="../page/cart.php" method="POST">
-        <input type="hidden" name="id" value="<?= $product['id']; ?>">
-        <button type="submit">Ajouter au panier</button>
-    </form>
-    <br>
+        <form action="../page/cart.php" method="POST">
+            <input type="hidden" name="id" value="<?= $product['id']; ?>">
+            <button type="submit">Ajouter au panier</button>
+        </form>
+    </div>
 </body>
 </html>

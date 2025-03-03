@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once 'config/database.php';
 require_once 'models/Product.php';
 require 'controllers/ProductController.php'; 
@@ -19,6 +20,11 @@ $products = Product::getAll();
         <div class="header-buttons">
             <a href="page/profile.php"><button>Profile</button></a>
             <a href="page/cart.php"><button>Panier</button></a>
+
+            <!-- Ajout du bouton Panel Admin si l'utilisateur est admin -->
+            <?php if (isset($_SESSION['user']) && $_SESSION['user']['role'] === 'admin'): ?>
+                <a href="admin/dashboard.php"><button>Panel Admin</button></a>
+            <?php endif; ?>
         </div>  
         <h1>Bienvenue sur notre boutique</h1>
 
