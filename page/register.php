@@ -6,6 +6,7 @@
 </head>
 <body>
     <h2>Inscription</h2>
+    <!-- envoie de la requete de d'inscription  -->
     <form method="POST" action="../controllers/UserController.php">
         <input type="text" name="name" placeholder="Nom" required>
         <input type="email" name="email" placeholder="Email" required>
