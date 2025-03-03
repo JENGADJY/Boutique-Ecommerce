@@ -10,10 +10,20 @@ if (!isset($_SESSION['user']) || $_SESSION['user']['role'] !== 'admin') {
 
 $users = User::getAll();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
-    User::delete($_POST['id']);
-    header("Location: manage_users.php");
-    exit();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['delete'])) {
+        User::delete($_POST['id']);
+        header("Location: manage_users.php");
+        exit();
+    }
+
+    if (isset($_POST['change_role'])) {
+        $userId = $_POST['id'];
+        $newRole = $_POST['new_role'];
+        User::updateRole($userId, $newRole);
+        header("Location: manage_users.php");
+        exit();
+    }
 }
 ?>
 
@@ -33,18 +43,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete'])) {
                 <th>ID</th>
                 <th>Nom</th>
                 <th>Email</th>
-                <th>Action</th>
+                <th>Rôle</th>
+                <th>Actions</th>
             </tr>
             <?php foreach ($users as $user): ?>
             <tr>
                 <td><?= htmlspecialchars($user['id']); ?></td>
                 <td><?= htmlspecialchars($user['name']); ?></td>
                 <td><?= htmlspecialchars($user['email']); ?></td>
+                <td><?= htmlspecialchars($user['role']); ?></td>
                 <td>
-                    <!-- Pour supprimer un user -->
-                    <form method="POST">
+                    <!-- Supprimer un utilisateur -->
+                    <form method="POST" style="display:inline;">
                         <input type="hidden" name="id" value="<?= $user['id']; ?>">
-                        <button type="submit" name="delete" onclick="return confirm('Confirmer la suppression ?')">Supprimer</button>
+                        <button type="submit" name="delete" onclick="return confirm('Confirmer la suppression ?')">🗑 Supprimer</button>
+                    </form>
+
+                    <!-- Changer le rôle d'un utilisateur -->
+                    <form method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="<?= $user['id']; ?>">
+                        <input type="hidden" name="new_role" value="<?= $user['role'] === 'admin' ? 'user' : 'admin'; ?>">
+                        <button type="submit" name="change_role">
+                            <?= $user['role'] === 'admin' ? '⬇ Rétrograder' : '⬆ Promouvoir'; ?>
+                        </button>
                     </form>
                 </td>
             </tr>

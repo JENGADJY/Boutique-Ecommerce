@@ -33,6 +33,12 @@ class User {
         $stmt = $conn->prepare("DELETE FROM users WHERE id = ?");
         return $stmt->execute([$id]);
     }
+
+    public static function updateRole($id, $role) {
+        global $conn;
+        $stmt = $conn->prepare("UPDATE users SET role = ? WHERE id = ?");
+        return $stmt->execute([$role, $id]);
+    }
     
 }
 ?>
