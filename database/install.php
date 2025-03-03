@@ -1,11 +1,10 @@
 <?php
-#Connexion à la database
+# Connexion à la database
 $host = 'localhost'; 
 $user = 'root';     
 $password = '';      
 $dbname = 'ecommerce'; 
 
-#insertion du script sql dans la db
 try {
     $conn = new PDO("mysql:host=$host", $user, $password);
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -15,8 +14,9 @@ try {
 
     $conn->exec("USE $dbname");
 
+    # Création des tables
     $sql = "
-    -- Création de la table 'users'
+    -- Table 'users'
     CREATE TABLE IF NOT EXISTS users (
         id INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
@@ -81,14 +81,27 @@ try {
         FOREIGN KEY (product_id) REFERENCES products(id) ON DELETE CASCADE, 
         FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     );
-
-    -- Insertion de données de test pour les utilisateurs
-    INSERT INTO users (name, email, password, role) VALUES
-    ('Admin', 'admin@admin.com', 'adminpassword', 'admin')
-
     ";
 
     $conn->exec($sql);
+    echo "Tables créées avec succès.<br>";
+
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM users WHERE email = 'admin@admin.com'");
+    $stmt->execute();
+    $adminExists = $stmt->fetchColumn();
+
+    if (!$adminExists) {
+        $hashedPassword = password_hash('adminpassword', PASSWORD_DEFAULT);
+
+        $stmt = $conn->prepare("INSERT INTO users (name, email, password, role) VALUES ('Admin', 'admin@admin.com', :password, 'admin')");
+        $stmt->bindParam(':password', $hashedPassword);
+        $stmt->execute();
+
+        echo "Compte administrateur créé avec succès.<br>";
+    } else {
+        echo "Le compte administrateur existe déjà.<br>";
+    }
+
     echo "Base de données initialisée avec succès !";
 
 } catch (PDOException $e) {
