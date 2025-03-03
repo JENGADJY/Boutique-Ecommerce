@@ -41,6 +41,12 @@ $stmt = $conn->prepare("
 ");
 $stmt->execute([$userId]);
 $cartItems = $stmt->fetchAll();
+
+// Calculer le total du panier
+$total = 0;
+foreach ($cartItems as $item) {
+    $total += $item['price'] * $item['quantity'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,12 +78,13 @@ $cartItems = $stmt->fetchAll();
                 </div>
             <?php endforeach; ?>
 
-            <form action="../controllers/CartController.php" method="POST">
-                <button type="submit" name="clear_cart">Vider le panier</button>
-            </form>
-
             <form action="../controllers/OrderController.php" method="POST">
                 <button type="submit" name="place_order" class="order-btn">Passer la commande</button>
+                <label for="price_total">Total : <?= number_format($total, 2, ',', ' '); ?>€</label>
+            </form>
+
+            <form action="../controllers/CartController.php" method="POST">
+                <button type="submit" name="clear_cart">Vider le panier</button>
             </form>
         <?php endif; ?>
 

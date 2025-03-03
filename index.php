@@ -16,6 +16,10 @@ $products = Product::getAll();
 <body>
 
     <div class="container">
+        <div class="header-buttons">
+            <a href="page/profile.php"><button>Profile</button></a>
+            <a href="page/cart.php"><button>Panier</button></a>
+        </div>  
         <h1>Bienvenue sur notre boutique</h1>
 
         <div class="products-grid">

@@ -112,9 +112,6 @@ h1 {
     transition: 0.2s;
 }
 
-
-
-
 .product-card button {
     background-color: #4cb4f3;
     border: none;
@@ -123,4 +120,31 @@ h1 {
 
 .product-card button:hover {
     background-color: #4cb4f3;
+}
+
+.header-buttons {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.header-buttons button {
+    background-color: #4cb4f3;
+    border: none;
+    color: #ebf4fb;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+    width: 150px;
+    text-align: center;
+}
+
+.header-buttons button:hover {
+    background-color: #3a9edc;
 }
